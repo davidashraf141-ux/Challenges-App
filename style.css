@@ -1,0 +1,2058 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: 'Cairo', sans-serif;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    overflow-y: auto;
+
+    background: #08173b;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    padding:
+        clamp(90px, 7vw, 120px) clamp(10px, 2vw, 20px) 20px;
+
+}
+
+.intro{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    
+    inset: 0;
+    
+    background: url(Assets/images/background.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    display: flex;
+    
+    justify-content: center;
+    
+    align-items: center;
+    
+    z-index: 1000;
+    
+    
+    
+    transition: .25s;
+}
+.Result{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    
+    inset: 0;
+    
+    background: url(Assets/images/background.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    display: flex;
+    
+    justify-content: center;
+    
+    align-items: center;
+    
+    z-index: 1000;
+    
+    
+    
+    transition: .25s;
+}
+
+.container{
+    position: relative;
+    background-color: white;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 24px;
+}
+
+.container p{
+    font-size: 1.1em;
+}
+
+#Start, #Restart{
+    position: absolute;
+    bottom: 20px;
+    width: 50%;
+    height: 55px;
+    background: #061d6a;
+    border: 5px solid rgba(255,255,255,0.75);
+    color: white;
+    font-size: 35px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#Result{
+    display: none;
+}
+
+#Start:hover, #Restart:hover{
+    background: #07237e;
+}
+
+.alert{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, .75);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 100;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .25s;
+}
+
+.alert.show {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+}
+
+.alert-box {
+
+    width: 100%;
+
+    max-width: 750px;
+
+    height:  30vh;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 25px 18px;
+
+    text-align: center;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, .25);
+
+}
+
+.alert-box h2 {
+
+    font-size: 40px;
+
+    font-weight: 900;
+
+    color: #102f8a;
+
+}
+
+.alert-box p {
+
+    margin-top: 20px;
+
+    font-size: 22px;
+
+    color: #08173b;
+
+}
+
+/* الخلفية */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    background-image: url('Assets/images/background.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    animation: bgZoom 14s ease-in-out infinite alternate;
+        
+
+    z-index: -10;
+
+}
+
+@keyframes bgZoom {
+
+    from {
+
+        transform: scale(1);
+
+    }
+
+    to {
+
+        transform: scale(1.04);
+
+    }
+
+}
+
+/* عناصر متحركة */
+
+.floating {
+
+    position: absolute;
+
+    font-size: 45px;
+
+    animation: float 5s ease-in-out infinite;
+
+    opacity: .85;
+
+    z-index: -1;
+
+}
+
+.coin1 {
+    top: 60px;
+    right: 120px;
+}
+
+.coin2 {
+    bottom: 70px;
+    left: 100px;
+}
+
+.coin3 {
+    top: 300px;
+    right: 40px;
+}
+
+.bulb1 {
+    top: 120px;
+    left: 80px;
+}
+
+.bulb2 {
+    bottom: 90px;
+    right: 90px;
+}
+
+.book1 {
+    top: 200px;
+    right: 100px;
+}
+
+.book2 {
+    bottom: 170px;
+    left: 60px;
+}
+
+@keyframes float {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+
+}
+
+/* العنوان */
+
+.header-title {
+
+    position: absolute;
+
+    top: 0;
+
+    overflow-y: visible;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 430px;
+
+    height: 100%;
+
+    border-radius: 0 0 40px 40px;
+
+    background:
+        linear-gradient(180deg, #172c91, #29136b);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    box-shadow:
+        0 0 25px rgba(0, 255, 255, .45);
+
+    z-index: 20;
+
+}
+.title {
+
+    filter:
+        drop-shadow(0 0 12px rgba(0, 255, 255, .35));
+    
+    position: absolute;
+
+    top: -95px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 430px;
+
+
+    border-radius: 0 0 40px 40px;
+
+    z-index: 50;
+
+    text-align: center;
+
+}
+
+.title h1 {
+
+
+    color: white;
+
+    font-size: 58px;
+
+    font-weight: 900;
+
+    line-height: 1.1;
+
+    text-shadow:
+        0 0 12px #00d9ff,
+        0 0 20px #ff00ea;
+
+}
+
+.title p {
+
+    color: white;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+}
+
+/* الصفحة */
+
+.page {
+
+    pointer-events: none;
+
+    width: 100%;
+
+    max-width: 1450px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    position: relative;
+
+    padding-inline: 140px;
+
+}
+
+/* الصندوق */
+
+.quiz-box {
+
+    width: 100%;
+
+    max-width: 1250px;
+
+    min-height: 650px;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, .96),
+            rgba(243, 245, 255, .95));
+
+    padding:
+        105px 190px 90px 30px;
+
+    position: relative;
+
+    overflow-y: visible;
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, .3),
+        inset 0 0 10px rgba(255, 255, 255, .9);
+
+}
+/* الجلو */
+
+.top-gradient {
+
+    position: absolute;
+
+    overflow-y: visible;
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 90px;
+
+    background:
+        linear-gradient(90deg,
+            #5bf6ff,
+            #8678ff,
+            #ba59ff,
+            #5bf6ff);
+
+}
+
+.top-gradient.main {
+    border-radius: 24px;
+}
+
+
+/* السؤال */
+
+.question-wrapper {
+
+
+    margin-top: 10px;
+
+    text-align: center;
+
+}
+
+.question-count {
+
+    width: 250px;
+
+    margin: auto;
+
+    background: #24439f;
+
+    color: white;
+
+    padding: 12px;
+
+    border-radius: 50px;
+
+    border: 5px solid white;
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+.question-box {
+
+    width: 100%;
+
+    min-height: 135px;
+
+    margin-top: -15px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(180deg, #061d6a, #08144f);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border: 5px solid rgba(255, 255, 255, .85);
+
+    padding: 15px 25px;
+
+}
+
+.question-box h2 {
+
+    color: white;
+
+    font-size: 50px;
+
+    font-weight: 900;
+
+    text-align: center;
+
+}
+
+/* الإجابات */
+
+.answers-grid {
+
+
+    margin-top: 40px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+
+}
+
+.answer {
+    position: relative;
+
+    overflow: hidden;
+
+    border: none;
+
+    border-radius: 24px;
+
+    min-height: 82px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 12px 18px;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    color: white;
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, .22);
+
+}
+
+.answer::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, .18),
+            transparent);
+
+    transform: translateX(-120%);
+
+    transition: .6s;
+
+}
+
+.answer:hover::before {
+
+    transform: translateX(120%);
+
+}
+
+.answer:hover {
+
+    transform: translateY(-4px) scale(1.02);
+
+}
+
+.answer-content {
+
+    position: relative;
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+    margin-right: 12px;
+
+    gap: 18px;
+
+}
+
+.emoji {
+    position: absolute;
+
+    left: 10px;
+    
+    font-size: 38px;
+
+}
+
+.answer-content div span {
+
+    font-size: 28px;
+
+
+
+    font-weight: 900;
+
+}
+
+.answer span {
+
+    line-height: 1.2;
+
+    word-break: break-word;
+
+}
+
+.answer-letter {
+
+    width: 54px;
+    height: 54px;
+
+    border-radius: 16px;
+
+    border: 3px solid rgba(255, 255, 255, .55);
+
+    background:
+        rgba(255, 255, 255, .18);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+}
+
+/* ألوان */
+
+.orange {
+
+    background:
+        linear-gradient(45deg, #ff4d00, #ff9800);
+
+}
+
+.blue {
+
+    background:
+        linear-gradient(45deg, #0088ff, #00cfff);
+
+}
+
+.green {
+
+    background:
+        linear-gradient(45deg, #00b45a, #00de80);
+
+}
+
+.yellow {
+
+    background:
+        linear-gradient(45deg, #ffb300, #ffd600);
+
+}
+
+/* البار السفلي */
+
+.bottom-bar {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 72px;
+
+    padding-inline: 28px;
+
+    border-radius:
+        0 0 32px 32px;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, .92),
+            rgba(225, 232, 255, .95));
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+/* اسم اللعبة */
+
+.game-name {
+
+    justify-self: center;
+
+    font-size: 26px;
+
+    font-weight: 900;
+
+    color: #102f8a;
+
+}
+
+.game-owner{
+    font-size: 26px;
+    
+    font-weight: 900;
+    
+    color: #102f8a;
+
+    
+}
+/* الأزرار */
+
+.bottom-buttons {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+/* زر التالي */
+
+.next-btn {
+
+    border: none;
+
+    height: 58px;
+
+    padding-inline: 28px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(45deg, #1d63ff, #00b8ff);
+
+    color: white;
+
+    font-size: 26px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 14px rgba(0, 0, 0, .25);
+
+    transition: .25s;
+
+}
+
+/* زر الخروج */
+
+.exit-btn {
+
+    border: none;
+
+    height: 58px;
+
+    padding-inline: 26px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(45deg, #d50000, #ff5252);
+
+    color: white;
+
+    font-size: 26px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 14px rgba(0, 0, 0, .25);
+
+    transition: .25s;
+
+}
+
+.next-btn,
+.exit-btn {
+
+    border: none;
+
+    border-radius: 15px;
+
+    padding: 10px 18px;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+.next-btn:hover,
+.exit-btn:hover {
+
+    transform: translateY(-2px);
+
+}
+
+.next-btn:hover,
+.exit-btn:hover {
+
+    transform: scale(1.05);
+
+}
+
+/* الجانب */
+
+.side-panel {
+
+    pointer-events: none;
+
+    position: absolute;
+
+    top: 110px;
+
+    right: 65px;
+
+    width: 200px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    z-index: 10;
+    
+
+}
+
+#score{
+    margin-top: -25px;
+}
+
+.sidebg{
+
+    position: absolute;
+    width: 67.5%;
+    height: 104%;
+
+    top: -11px;
+    left: -10px;
+
+    background: linear-gradient(0deg,
+            #5bf6ff,
+            #8678ff,
+            #ba59ff,
+            #5bf6ff);;
+
+    z-index: -2;
+
+    border-radius: 24px 0 0 24px; 
+}
+
+.panel-card {
+
+    position: relative;
+
+    pointer-events: auto;
+
+    width: 100%;
+    height: 130px;
+
+    border-radius: 24px;
+
+    padding: 18px;
+
+    background:
+        linear-gradient(90deg, #172c91, #29136b);
+
+    color: white;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, .25);
+
+}
+
+.panel-card.long {
+
+    min-height: 320px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.panel-title {
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+}
+
+.panel-card h3 {
+
+    margin-top: 6px;
+
+    font-size: 52px;
+
+    color: #ffd600;
+
+}
+
+.increment-value{
+
+    position: absolute;
+
+    left: -50px;
+    top: 39%;
+
+    color: #ffd600;
+
+    height: 100px;
+    width: 100px;
+
+    font-size: 45px;
+
+    font-weight: bolder;
+
+    animation: go-in .5s ease-in;
+
+    display: none;
+
+    transition: .75s;
+}
+
+@keyframes go-in {
+    
+    from{
+        transform: translateY(50px);
+        opacity: 0.5;
+    }
+
+    to{
+        transform: translateY(10px);
+        opacity: 1;
+    }
+}
+
+/* المستوى */
+
+.level-bar {
+
+    width: 100%;
+
+    height: 35px;
+
+    border-radius: 30px;
+
+    background: white;
+
+    overflow: hidden;
+
+    margin-top: 20px;
+
+}
+
+.level-fill {
+
+    width: 72%;
+    height: 100%;
+
+    background:
+        linear-gradient(90deg, #ffe600, #5dffb3);
+
+}
+
+/* التايمر */
+
+/* التايمر */
+
+.timer-circle {
+
+    
+
+   
+
+    width: 120px;
+    height: 120px;
+
+    position: fixed;
+
+    bottom: 0;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+/* الـ SVG */
+
+.progress-ring {
+
+    position: absolute;
+
+    transform: rotate(-90deg);
+
+}
+
+/* الخلفية */
+
+.progress-bg {
+
+    fill: none;
+
+    stroke: rgba(255, 255, 255, .15);
+
+    stroke-width: 10;
+
+}
+
+/* الدائرة المتحركة */
+
+.progress {
+
+    fill: none;
+
+    stroke: #ffd600;
+
+    stroke-width: 10;
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 326;
+
+    stroke-dashoffset: 0;
+
+    transition: 1s linear;
+
+    filter:
+        drop-shadow(0 0 8px rgba(255, 214, 0, .6));
+
+}
+
+/* المحتوى */
+
+.timer-content {
+
+    justify-self: end;
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    background: #07175c;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: -1.5;
+
+}
+
+#timer {
+
+    justify-self: flex-end;
+
+    font-size: 42px;
+
+    color: white;
+
+    font-weight: 900;
+
+}
+
+.timer-content small {
+
+    margin-top: -22px;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+/* Responsive */
+
+/* ================================================= */
+/* ================= LARGE LAPTOP ================== */
+/* ================================================= */
+
+@media screen and (max-width: 1400px) {
+
+    .page {
+        padding-inline: 70px;
+    }
+
+    .quiz-box {
+        padding: 105px 150px 90px 30px;
+    }
+
+    .question-box h2 {
+        font-size: 42px;
+    }
+
+    .answer-content div span {
+        font-size: 24px;
+    }
+
+    .side-panel {
+        right: -5px;
+    }
+
+}
+
+/* ================================================= */
+/* =================== LAPTOP ====================== */
+/* ================================================= */
+
+@media screen and (max-width: 1200px) {
+
+    body {
+        padding-top: 120px;
+    }
+
+    .page {
+        flex-direction: column;
+        align-items: center;
+        padding-inline: 20px;
+    }
+
+    .quiz-box {
+        width: 100%;
+        padding: 105px 25px 100px;
+    }
+
+    .side-panel {
+
+        position: relative;
+
+        top: auto;
+        right: auto;
+
+        width: 100%;
+
+        flex-direction: row;
+
+        justify-content: center;
+
+        align-items: stretch;
+
+        flex-wrap: wrap;
+
+        gap: 18px;
+
+        margin-top: 20px;
+    }
+
+    .sidebg {
+        display: none;
+    }
+
+    .panel-card {
+        flex: 1;
+        min-width: 240px;
+    }
+
+}
+
+/* ================================================= */
+/* =================== TABLET ====================== */
+/* ================================================= */
+
+@media screen and (max-width: 992px) {
+
+    .title {
+        width: 320px;
+    }
+
+    .title h1 {
+        font-size: 44px;
+    }
+
+    .title p {
+        font-size: 20px;
+    }
+
+    .question-count {
+        width: 210px;
+        font-size: 24px;
+    }
+
+    .question-box {
+        min-height: 120px;
+    }
+
+    .question-box h2 {
+        font-size: 34px;
+    }
+
+    .answers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .answer {
+        min-height: 90px;
+    }
+
+    .answer-content div span {
+        font-size: 24px;
+    }
+
+    .emoji {
+        font-size: 32px;
+    }
+
+    .bottom-bar {
+
+        position: relative;
+
+        height: auto;
+
+        flex-direction: column;
+
+        gap: 16px;
+
+        padding: 18px;
+    }
+
+    .bottom-buttons {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .next-btn,
+    .exit-btn {
+        width: 220px;
+    }
+
+}
+
+/* ================================================= */
+/* ================= MOBILE LANDSCAPE ============== */
+/* ================================================= */
+
+@media screen and (max-width: 850px) and (orientation: landscape) {
+
+    body {
+        padding-top: 100px;
+    }
+
+    .quiz-box {
+        padding: 90px 20px 90px;
+    }
+
+    .question-box h2 {
+        font-size: 28px;
+    }
+
+    .answer {
+        min-height: 75px;
+    }
+
+    .answer-content div span {
+        font-size: 20px;
+    }
+
+    .emoji {
+        font-size: 28px;
+    }
+
+    .panel-card {
+        min-width: 180px;
+    }
+
+}
+
+/* ================================================= */
+/* =================== MOBILE ====================== */
+/* ================================================= */
+
+@media screen and (max-width: 768px) {
+
+    body {
+        padding-inline: 10px;
+        padding-top: 100px;
+    }
+
+    .intro .container {
+        width: 95%;
+        height: auto;
+        padding: 30px 15px 100px;
+    }
+
+    #Start, #Restart {
+        width: 80%;
+        font-size: 28px;
+    }
+
+    .header-title {
+        width: 90%;
+    }
+
+    .title {
+        width: 100%;
+        top: -75px;
+    }
+
+    .title h1 {
+        font-size: 38px;
+    }
+
+    .title p {
+        font-size: 18px;
+    }
+
+    .quiz-box {
+
+        border-radius: 24px;
+
+        padding:
+            95px 15px 25px;
+    }
+
+    .question-count {
+        width: 180px;
+        font-size: 22px;
+    }
+
+    .question-box {
+        min-height: 120px;
+        padding: 15px;
+    }
+
+    .question-box h2 {
+        font-size: 28px;
+        line-height: 1.4;
+    }
+
+    .answers-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .answer {
+        min-height: 80px;
+        border-radius: 18px;
+        padding: 10px 14px;
+    }
+
+    .answer-letter {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+    }
+
+    .answer-content {
+        gap: 10px;
+    }
+
+    .answer-content div span {
+        font-size: 20px;
+    }
+
+    .emoji {
+        font-size: 26px;
+        left: 5px;
+    }
+
+    .bottom-bar {
+        margin-top: 20px;
+    }
+
+    .game-name {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .next-btn,
+    .exit-btn {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .panel-card {
+        min-width: 100%;
+    }
+
+    .panel-title {
+        font-size: 22px;
+    }
+
+    .panel-card h3 {
+        font-size: 42px;
+    }
+
+    .timer-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .timer-content {
+        width: 100px;
+        height: 100px;
+    }
+
+    #timer {
+        font-size: 34px;
+    }
+
+}
+
+/* ================================================= */
+/* ================= SMALL MOBILE ================== */
+/* ================================================= */
+
+@media screen and (max-width: 480px) {
+
+    .title h1 {
+        font-size: 30px;
+    }
+
+    .title p {
+        font-size: 15px;
+    }
+
+    .question-box h2 {
+        font-size: 24px;
+    }
+
+    .answer {
+        min-height: 72px;
+    }
+
+    .answer-content div span {
+        font-size: 18px;
+    }
+
+    .emoji {
+        font-size: 22px;
+    }
+
+    .alert-box {
+        width: 92%;
+        height: auto;
+        padding: 30px 15px;
+    }
+
+    .alert-box h2 {
+        font-size: 28px;
+    }
+
+    .alert-box p {
+        font-size: 18px;
+    }
+
+    #Start, #Restart {
+        font-size: 22px;
+        height: 50px;
+    }
+
+}
+
+/* ================================================= */
+/* ============== VERY SMALL DEVICES =============== */
+/* ================================================= */
+
+@media screen and (max-width: 360px) {
+
+    .question-box h2 {
+        font-size: 20px;
+    }
+
+    .answer-content div span {
+        font-size: 16px;
+    }
+
+    .answer-letter {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .panel-title {
+        font-size: 18px;
+    }
+
+    .panel-card h3 {
+        font-size: 34px;
+    }
+
+}
+
+/* ================================================= */
+/* ================= MOBILE FIX ==================== */
+/* ================================================= */
+
+@media screen and (max-width: 768px){
+
+    body{
+
+        display: block;
+
+        padding: 85px 10px 30px;
+
+        overflow-x: hidden;
+
+    }
+
+    /* ================= INTRO ================= */
+
+    .intro{
+
+        padding: 20px;
+
+    }
+
+    .container{
+
+        width: 100%;
+
+        height: auto;
+
+        min-height: 420px;
+
+        padding: 25px 15px 100px;
+
+        border-radius: 20px;
+
+    }
+
+    .container h1{
+
+        font-size: 30px;
+
+        line-height: 1.3;
+
+    }
+
+    .container p{
+
+        font-size: 18px;
+
+        margin-top: 15px;
+
+        line-height: 1.6;
+
+    }
+
+    #Start{
+
+        width: 85%;
+
+        height: 55px;
+
+        font-size: 24px;
+
+        bottom: 20px;
+
+    }
+
+    /* ================= PAGE ================= */
+
+    .page{
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        padding-inline: 0;
+
+        gap: 15px;
+
+    }
+
+    /* ================= QUIZ ================= */
+
+    .quiz-box{
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 95px 12px 25px;
+
+        border-radius: 22px;
+
+        overflow: hidden;
+
+    }
+
+    /* ================= TITLE ================= */
+
+    .header-title{
+
+        width: 92%;
+
+        height: 85px;
+
+    }
+
+    .title{
+
+        width: 100%;
+
+        top: -72px;
+
+    }
+
+    .title h1{
+
+        font-size: 34px;
+
+    }
+
+    .title p{
+
+        font-size: 16px;
+
+    }
+
+    /* ================= QUESTION ================= */
+
+    .question-wrapper{
+
+        margin-top: 0;
+
+    }
+
+    .question-count{
+
+        width: 170px;
+
+        font-size: 20px;
+
+        padding: 10px;
+
+    }
+
+    .question-box{
+
+        min-height: 115px;
+
+        border-radius: 20px;
+
+        padding: 15px;
+
+    }
+
+    .question-box h2{
+
+        font-size: 24px;
+
+        line-height: 1.5;
+
+    }
+
+    /* ================= ANSWERS ================= */
+
+    .answers-grid{
+
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 25px;
+
+    }
+
+    .answer{
+
+        min-height: 76px;
+
+        border-radius: 18px;
+
+        padding: 10px 12px;
+
+    }
+
+    .answer-letter{
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 20px;
+
+        border-radius: 12px;
+
+        flex-shrink: 0;
+
+    }
+
+    .answer-content{
+
+        width: 100%;
+
+        margin-right: 8px;
+
+        padding-left: 35px;
+
+        gap: 10px;
+
+    }
+
+    .answer-content div span{
+
+        font-size: 18px;
+
+        line-height: 1.4;
+
+    }
+
+    .emoji{
+
+        font-size: 24px;
+
+        left: 0;
+
+    }
+
+    /* ================= BOTTOM BAR ================= */
+
+    .bottom-bar{
+
+        position: relative;
+
+        height: auto;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 15px;
+
+        margin-top: 20px;
+
+        border-radius: 18px;
+
+    }
+
+    .game-name{
+
+        font-size: 18px;
+
+        text-align: center;
+
+    }
+
+    .bottom-buttons{
+
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+    .next-btn,
+    .exit-btn{
+
+        width: 100%;
+
+        height: 52px;
+
+        font-size: 18px;
+
+        border-radius: 14px;
+
+    }
+
+    /* ================= SIDE PANEL ================= */
+
+    .side-panel{
+
+        position: relative;
+
+        top: auto;
+
+        right: auto;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+        margin-top: 0;
+
+    }
+
+    .sidebg{
+
+        display: none;
+
+    }
+
+    .panel-card{
+
+        width: 100%;
+
+        height: auto;
+
+        min-height: 110px;
+
+        border-radius: 20px;
+
+    }
+
+    .panel-card.long{
+
+        min-height: 240px;
+
+    }
+
+    .panel-title{
+
+        font-size: 22px;
+
+    }
+
+    .panel-card h3{
+
+        font-size: 42px;
+
+    }
+
+    #score{
+
+        margin-top: -10px;
+
+    }
+
+    /* ================= TIMER ================= */
+
+    .timer-circle{
+
+        width: 100px;
+
+        height: 100px;
+
+    }
+
+    .progress-ring{
+
+        width: 100px;
+
+        height: 100px;
+
+    }
+
+    .timer-content{
+
+        width: 85px;
+
+        height: 85px;
+
+    }
+
+    #timer{
+
+        font-size: 30px;
+
+    }
+
+    .timer-content small{
+
+        font-size: 16px;
+
+        margin-top: -10px;
+
+    }
+
+    /* ================= ALERT ================= */
+
+    .alert{
+
+        padding: 20px;
+
+    }
+
+    .alert-box{
+
+        width: 100%;
+
+        height: auto;
+
+        min-height: 180px;
+
+        border-radius: 20px;
+
+        padding: 25px 15px;
+
+    }
+
+    .alert-box h2{
+
+        font-size: 28px;
+
+    }
+
+    .alert-box p{
+
+        font-size: 18px;
+
+        line-height: 1.5;
+
+    }
+
+    /* ================= FLOATING ================= */
+
+    .floating{
+
+        font-size: 30px;
+
+        opacity: .4;
+
+    }
+
+}
+
+/* ================================================= */
+/* ============== SMALL PHONES FIX ================= */
+/* ================================================= */
+
+@media screen and (max-width: 420px){
+
+    .title h1{
+
+        font-size: 28px;
+
+    }
+
+    .question-box h2{
+
+        font-size: 21px;
+
+    }
+
+    .answer-content div span{
+
+        font-size: 16px;
+
+    }
+
+    .emoji{
+
+        font-size: 20px;
+
+    }
+
+    .panel-title{
+
+        font-size: 18px;
+
+    }
+
+    .panel-card h3{
+
+        font-size: 34px;
+
+    }
+
+    .next-btn,
+    .exit-btn{
+
+        font-size: 16px;
+
+    }
+
+}
