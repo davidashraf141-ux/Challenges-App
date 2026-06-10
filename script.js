@@ -565,7 +565,7 @@ function ResetGame(){
     SscoreElement.innerHTML = `: Score  <br> ${score}`;
 
     score = 0;
-    scoreElement.innertext = score;
+    scoreElement.innertext = "0";
     clearInterval(countdown);
 
 }
@@ -580,7 +580,7 @@ function EndGame(){
     });
 
     score = 0;
-    scoreElement.innertext = score;
+    scoreElement.innertext = "0";
     clearInterval(countdown);
     timerSound.pause();
 
