@@ -540,6 +540,7 @@ function nextQuestion(){
 }
 
 function ResetGame(){
+    scoreElement.innertext = "0";
     ResultElement.style.display = 'flex';
 
     PageElement.style.pointerEvents = "none";
@@ -565,12 +566,13 @@ function ResetGame(){
     SscoreElement.innerHTML = `: Score  <br> ${score}`;
 
     score = 0;
-    scoreElement.innertext = "0";
+    
     clearInterval(countdown);
 
 }
 
 function EndGame(){
+    scoreElement.innertext = "0";
     IntroElement.style.display = 'flex';
     PageElement.style.pointerEvents = "none";
     playing = false;
@@ -580,7 +582,7 @@ function EndGame(){
     });
 
     score = 0;
-    scoreElement.innertext = "0";
+    
     clearInterval(countdown);
     timerSound.pause();
 
