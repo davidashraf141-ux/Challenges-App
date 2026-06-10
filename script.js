@@ -246,6 +246,7 @@ function StartGame(){
     ResultElement.style.display = 'none';
     PageElement.style.pointerEvents = "auto";
     StateElement.innerText = '';
+    scoreElement.innertext = "0";
     nextQuestion();
 };
 
@@ -540,7 +541,8 @@ function nextQuestion(){
 }
 
 function ResetGame(){
-    scoreElement.innertext = "0";
+    
+    
     ResultElement.style.display = 'flex';
 
     PageElement.style.pointerEvents = "none";
@@ -572,7 +574,7 @@ function ResetGame(){
 }
 
 function EndGame(){
-    scoreElement.innertext = "0";
+    
     IntroElement.style.display = 'flex';
     PageElement.style.pointerEvents = "none";
     playing = false;
