@@ -246,7 +246,6 @@ function StartGame(){
     ResultElement.style.display = 'none';
     PageElement.style.pointerEvents = "auto";
     StateElement.innerText = '';
-    scoreElement.innertext = "0";
     nextQuestion();
 };
 
@@ -568,7 +567,7 @@ function ResetGame(){
     SscoreElement.innerHTML = `: Score  <br> ${score}`;
 
     score = 0;
-    
+    scoreElement.innerText = score;
     clearInterval(countdown);
 
 }
@@ -584,7 +583,7 @@ function EndGame(){
     });
 
     score = 0;
-    
+    scoreElement.innerText = score;
     clearInterval(countdown);
     timerSound.pause();
 
