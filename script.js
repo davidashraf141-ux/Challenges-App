@@ -298,7 +298,7 @@ answers.forEach(answer => {
 
             ShowIncrement()
 
-            scoreElement.innerText = score;
+            
 
         }
 
@@ -382,6 +382,8 @@ function ShowIncrement(){
 
     increment = Math.ceil(timeLeft / totalTime * 100)
     score += increment;
+
+    scoreElement.innerText = score;
     
 
     increaseScoreElement.innerText = `${increment}+`
@@ -563,6 +565,7 @@ function ResetGame(){
     SscoreElement.innerHTML = `: Score  <br> ${score}`;
 
     score = 0;
+    scoreElement.innertext = score;
     clearInterval(countdown);
 
 }
@@ -577,6 +580,7 @@ function EndGame(){
     });
 
     score = 0;
+    scoreElement.innertext = score;
     clearInterval(countdown);
     timerSound.pause();
 
