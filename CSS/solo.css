@@ -14,8 +14,6 @@ body {
 
     overflow-y: auto;
 
-    background: #08173b;
-
     display: flex;
 
     justify-content: center;
@@ -36,7 +34,7 @@ body {
     
     inset: 0;
     
-    background: url(Assets/images/background.png);
+    background: url(../Assets/images/background.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -60,7 +58,7 @@ body {
     
     inset: 0;
     
-    background: url(Assets/images/background.png);
+    background: url(../Assets/images/background.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -81,8 +79,8 @@ body {
 .container{
     position: relative;
     background-color: white;
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 60%;
     text-align: center;
     padding: 25px 15px;
     display: flex;
@@ -96,7 +94,7 @@ body {
     font-size: 1.1em;
 }
 
-#Start, #Restart{
+.mainButtons{
     position: absolute;
     bottom: 20px;
     width: 50%;
@@ -116,6 +114,23 @@ body {
 #Start:hover, #Restart:hover{
     background: #07237e;
 }
+
+#Start{
+    bottom: 80px;
+    height: 70px;
+    width: 40%;
+}
+
+#Back{
+    background: red;
+    width: 20%;
+    border-color: orange;
+    bottom: 15px;
+}
+#Back:hover{
+    background: rgb(255, 59, 59);
+}
+
 
 .alert{
     position: fixed;
@@ -203,7 +218,7 @@ body {
 
     inset: 0;
 
-    background-image: url('Assets/images/background.png');
+    background-image: url('../Assets/images/background.png');
 
     background-size: cover;
     background-position: center;
@@ -343,7 +358,7 @@ body {
     
     position: absolute;
 
-    top: -95px;
+    top: -30px;
 
     left: 50%;
 
@@ -378,6 +393,8 @@ body {
 }
 
 .title p {
+
+    margin-top: 10px;
 
     color: white;
 
@@ -427,7 +444,7 @@ body {
             rgba(243, 245, 255, .95));
 
     padding:
-        105px 190px 90px 30px;
+        105px 170px 90px 30px;
 
     position: relative;
 
@@ -480,7 +497,7 @@ body {
 
 .question-count {
 
-    width: 250px;
+    width: 300px;
 
     margin: auto;
 
@@ -496,12 +513,22 @@ body {
 
     font-size: 32px;
 
+    text-align: center;
+
     font-weight: 800;
 
     position: relative;
 
     z-index: 5;
 
+}
+
+#question-count{
+    position: absolute;
+    border-radius: 18px;
+    left: 50px;
+    top: 95px;
+    width: fit-content;
 }
 
 .question-box {
@@ -784,7 +811,7 @@ body {
 
 /* زر التالي */
 
-.next-btn {
+.pause-btn,.next-btn {
 
     border: none;
 
@@ -793,9 +820,6 @@ body {
     padding-inline: 28px;
 
     border-radius: 18px;
-
-    background:
-        linear-gradient(45deg, #1d63ff, #00b8ff);
 
     color: white;
 
@@ -810,6 +834,66 @@ body {
 
     transition: .25s;
 
+}
+
+.pause-btn{
+    background:
+        linear-gradient(45deg, #01ffd9, #00d0ff);
+}
+.next-btn:disabled{
+    background:
+        linear-gradient(45deg, #000000e6, #000000a3);
+
+    pointer-events: none;
+
+    animation: none;
+}
+.next-btn{
+    background:
+        linear-gradient(90deg, #00ff22, #6fff00);
+
+    animation: appear 1s linear;
+}
+.next-btn:hover{
+    border: solid black 1px;
+    animation: excite .8s  infinite linear;
+}
+
+.next-btn.finish {
+    background: linear-gradient(90deg, #a78b00, #c17100);
+    
+}
+
+@keyframes excite{
+
+    40%{
+        transform: rotate(8deg) scale(1.03);
+    }
+    80%{
+        transform: rotate(-8deg) scale(1.05);
+    }
+    90%{
+        transform: rotate(-4deg) scale(1.03);
+    }
+    100%{
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+@keyframes appear {
+
+    from{
+        transform: scale(1);
+    }
+
+    20%{
+        border: solid black 2px;
+    }
+    
+    to{
+        transform: scale(1.1);
+        
+    }
 }
 
 /* زر الخروج */
@@ -842,6 +926,7 @@ body {
 
 }
 
+.pause-btn,
 .next-btn,
 .exit-btn {
 
@@ -861,18 +946,59 @@ body {
 
 }
 
-.next-btn:hover,
+.pause-btn:hover,
 .exit-btn:hover {
 
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.05);
 
 }
 
-.next-btn:hover,
-.exit-btn:hover {
+.wrapper{
+    position: relative;
+}
 
-    transform: scale(1.05);
+.overhide{
 
+    pointer-events: none;
+    
+    height: 81.5%;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    background-color: rgba(0,0,0,.96);
+
+    z-index: 5;
+
+    position: absolute;
+
+    bottom: 0;
+
+    color: white;
+
+    font-size: 5em;
+
+    border-radius: 24px;
+
+    border: solid whitesmoke 10px;
+
+    box-shadow:
+            0 10px 30px rgba(0, 0, 0, .25);
+
+    transition: .3s;
+
+}
+
+.overhide.active{
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* الجانب */
@@ -888,6 +1014,9 @@ body {
     right: 65px;
 
     width: 200px;
+    
+
+    height: calc(100% - 200px);
 
     display: flex;
 
@@ -952,6 +1081,8 @@ body {
 .panel-card.long {
 
     min-height: 320px;
+
+    height: 100%;
 
     display: flex;
 
@@ -1050,10 +1181,6 @@ body {
 /* التايمر */
 
 .timer-circle {
-
-    
-
-   
 
     width: 120px;
     height: 120px;

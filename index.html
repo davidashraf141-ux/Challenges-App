@@ -17,373 +17,42 @@
           rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style.css">
 
 </head>
 
 <body>
 
-    <div class="Result" id="Result">
-        <div class="container">
-            <div class="top-gradient main">
-                <div class="header-title">
-                    <div class="title">
-                        <h1 style="margin-bottom: 10px;">
-                            تحدي
-                        </h1> 
-                        <h1>
-                            المعرفة!
-                        </h1>
-
-                        <p>
-                            مسابقة أسئلة وأجوبة
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-            <h1>لقد انتهت اللعبة 🎉🔥</h1>
-            <p id="Hscore">Highest score : <br> </p>
-            <p id="Sscore">Score : <br> </p>
-            <p id="state"></p>
-            
-            <button id="Restart">!العب تاني</button>
-        </div>
-    </div>
-
     <div class="intro" id="Intro">
-        
-        
-        <div class="container">
-            <div class="top-gradient main">
-                <div class="header-title">
-                    <div class="title">
-                        <h1 style="margin-bottom: 10px;">
-                            تحدي
-                        </h1> 
-                        <h1>
-                            المعرفة!
-                        </h1>
+      <div class="container">
+        <div class="top-gradient main">
+          <div class="header-title">
+            <div class="title">
+              
+              <h1>تحدي المعرفة!</h1>
 
-                        <p>
-                            مسابقة أسئلة وأجوبة
-                        </p>
-
-                    </div>
-                </div>
+              <p>مسابقة أسئلة وأجوبة</p>
             </div>
-            <h1> اهلا بكم في لعبة تحدي المعرفة🔥🔥 !</h1>
-            <p>اللعبة تتضمن مجموعة متنوعة من الاسئلة : جغرافيا, دين, معلومات عامة. </p>
-            <button id="Start" >ابدأ اللعبة!</button>
+          </div>
         </div>
+        <h1>اهلا بكم في لعبة تحدي المعرفة🔥🔥 !</h1>
+        <p>
+          اللعبة تتضمن مجموعة متنوعة من الاسئلة : جغرافيا, دين, معلومات عامة.
+        </p>
+        <br>
+        
+        <h3>قم بإختيار نمط اللعب</h3>
+        <div class="choiceContainer">
+            <button id="soloMode"> 🎮 لعب فردي</button>
+            <button id="duoMode"> 👥 فريقان</button>
+        </div>
+      </div>
     </div>
 
-    
-
-    <!-- الخلفية -->
     <div class="background"></div>
-
-    <!-- عناصر ديكور -->
-
-
-    <div class="floating bulb bulb1">💡</div>
-    <div class="floating bulb bulb2">💡</div>
-
-    <div class="floating book book1">📖</div>
-    <div class="floating book book2">📖</div>
-
-    
-    
-    <!-- الصفحة -->
-
-    <div class="page" id="Page">
-        
-
-        <!-- الصندوق الرئيسي -->
-
-        <div class="quiz-box">
-
-            <!-- شريط علوي -->
-            <div class="top-gradient">
-                <div class="header-title">
-                    <div class="title">
-                        <h1 style="margin-bottom: 10px;">
-                            تحدي
-                        </h1> 
-                        <h1>
-                            المعرفة!
-                        </h1>
-
-                        <p>
-                            مسابقة أسئلة وأجوبة
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- السؤال -->
-
-            <div class="question-wrapper">
-
-                <div class="question-count" id="question-count">
-                    السؤال 1 / 10
-                </div>
-
-                <div class="question-box">
-
-                    <h2 id="question">
-                        ما هي عاصمة مصر؟
-                    </h2>
-
-                </div>
-
-            </div>
-
-            <!-- الإجابات -->
-
-            <div class="answers-grid">
-
-                <!-- A -->
-
-                <button class="answer orange" id="1">
-
-                    <div class="answer-letter">
-                        A
-                    </div>
-
-                    <div class="answer-content">
-
-                        <div>
-                            <span>
-                            القاهرة
-                            </span>
-                        </div>
-                        
-                        <div class="emoji">
-                            🏜️
-                        </div>
-                        
-
-                    </div>
-                    
-
-                    
-
-                </button>
-
-                <!-- B -->
-
-                <button class="answer blue" id="2">
-
-                    <div class="answer-letter">
-                        B
-                    </div>
-
-                    <div class="answer-content">
-
-                        <div>
-                            <span>
-                            الإسكندرية
-                            </span>
-
-                        </div>
-                        
-                        <div class="emoji">
-                            🌊
-                        </div>
-
-
-                    </div>
-
-                    
-
-                </button>
-
-                <!-- C -->
-
-                <button class="answer green" id="3">
-
-                    <div class="answer-letter">
-                        C
-                    </div>
-
-                    <div class="answer-content">
-
-
-                        <div>
-                            <span>
-                            الجيزة
-                            </span>
-                        </div>
-                        
-
-                        <div class="emoji">
-                            🗿
-                        </div>
-
-                    </div>
-
-                    
-
-                </button>
-
-                <!-- D -->
-
-                <button class="answer yellow" id="4">
-
-                    <div class="answer-letter">
-                        D
-                    </div>
-
-                    <div class="answer-content">
-
-                        <div>
-                            <span>
-                            الأقصر
-                            </span>
-                        </div>
-                        
-
-                        <div class="emoji">
-                            🏛️
-                        </div>
-
-
-                    </div>
-
-                    
-
-                </button>
-
-            </div>
-
-            <!-- الأسفل -->
-
-
-            <div class="bottom-bar">
-                <div class="bottom-buttons">
-
-                    <button class="exit-btn" id="exit">
-                        ✖ خروج
-                    </button>
-
-                </div>
-
-                
-
-                <div class="game-name">
-                    تحدي المعرفة - 2026
-                </div>
-
-                
-                <div class="game-owner">
-                    By: David Ashraf
-                </div>
-                
-
-            </div>
-
-        </div>
-
-        <!-- الجانب -->
-
-        <div class="side-panel">
-            <div class="sidebg"></div>
-
-            <!-- النقاط -->
-
-            <div class="panel-card">
-
-                <div class="increment-value" id="increaseScore">
-                    100+
-                </div>
-
-                <span class="panel-title">
-                    النقاط:
-                </span>
-
-                <h3 id="score">
-                    0
-                </h3>
-
-            </div>
-
-            <!-- المستوى -->
-
-            <div class="panel-card long">
-
-
-                <span class="panel-title long" id="type">
-                    نوع : 
-                </span>
-
-                <!-- <div class="level-bar">
-
-                    <div class="level-fill"></div>
-
-                </div> -->
-
-                <br>
-
-                <div class="timer-circle">
-
-                    <svg class="progress-ring"
-                        width="120"
-                        height="120">
-
-                        <circle
-                            class="progress-bg"
-                            cx="60"
-                            cy="60"
-                            r="52"
-                        />
-
-                        <circle
-                            class="progress"
-                            cx="60"
-                            cy="60"
-                            r="52"
-                        />
-
-                    </svg>
-
-                    <div class="timer-content">
-
-                        <span id="timer">
-                            15
-                        </span>
-
-                        <small>
-                            ثانية
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- التايمر -->
-
-
-        </div>
-
-    </div>
-
-    <!-- صوت -->
-
-    <audio id="clickSound"
-           src="Assets/sounds/click.mp3"></audio>
-    <audio id="correctSound"
-           src="Assets/sounds/correct.mp3"></audio>
-    <audio id="wrongSound"
-           src="Assets/sounds/Wrong.mp3"></audio>
-    <audio id="timerSound"
-           src="Assets/sounds/timer.mp3"></audio>
     
     <!-- JS -->
-    <script src="script.js"></script>
+    <script src="JS/script.js"></script>
 
 </body>
 

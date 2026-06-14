@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="theme-color" content="#08173b" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>تحدي المعرفة</title>
+
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="CSS/solo.css" />
+  </head>
+
+  <body>
+    <div class="Result" id="Result">
+      <div class="container">
+        <div class="top-gradient main">
+          <div class="header-title">
+            <div class="title">
+              
+              <h1>تحدي المعرفة!</h1>
+
+              <p>مسابقة أسئلة وأجوبة</p>
+            </div>
+          </div>
+        </div>
+        <h1>لقد انتهت اللعبة 🎉🔥</h1>
+        <p id="Hscore">Highest score : <br /></p>
+        <p id="Sscore">Score : <br /></p>
+        <p id="state"></p>
+
+        <button id="Restart" class="mainButtons">!العب تاني</button>
+      </div>
+    </div>
+
+    <div class="intro" id="Intro">
+      <div class="container">
+        <div class="top-gradient main">
+          <div class="header-title">
+            <div class="title">
+              
+              <h1>تحدي المعرفة!</h1>
+
+              <p>مسابقة أسئلة وأجوبة</p>
+            </div>
+          </div>
+        </div>
+        <h1> لعبة تحدي المعرفة 🔥🔥 !</h1>
+        <h3> نمط اللعب : 🎮 لعب فردي</h3>
+        <button id="Start" class="mainButtons">ابدأ اللعبة!</button>
+        <button id="Back" class="mainButtons">عودة</button>
+
+      </div>
+    </div>
+
+    <!-- الخلفية -->
+    <div class="background"></div>
+
+    <!-- عناصر ديكور -->
+
+    <div class="floating bulb bulb1">💡</div>
+    <div class="floating bulb bulb2">💡</div>
+
+    <div class="floating book book1">📖</div>
+    <div class="floating book book2">📖</div>
+
+    <!-- الصفحة -->
+
+    <div class="page" id="Page">
+      <!-- الصندوق الرئيسي -->
+
+      <div class="quiz-box">
+        <div class="question-count" id="question-count">السؤال 100 / 100</div>
+        <!-- شريط علوي -->
+        <div class="top-gradient">
+          <div class="header-title">
+            <div class="title">
+              <h1>تحدي المعرفة!</h1>
+
+              <p>مسابقة أسئلة وأجوبة</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- السؤال -->
+
+        <div class="wrapper">
+          <div class="question-wrapper">
+            <div class="question-count" id="Cquestion-count">السؤال 100 / 100</div>
+
+            <div class="question-box">
+              <h2 id="question">ما هي عاصمة مصر؟</h2>
+            </div>
+          </div>
+
+          <!-- الإجابات -->
+
+          <div class="answers-grid">
+            <!-- A -->
+
+            <button class="answer orange" id="1">
+              <div class="answer-letter">A</div>
+
+              <div class="answer-content">
+                <div>
+                  <span> القاهرة </span>
+                </div>
+
+                <div class="emoji">🏜️</div>
+              </div>
+            </button>
+
+            <!-- B -->
+
+            <button class="answer blue" id="2">
+              <div class="answer-letter">B</div>
+
+              <div class="answer-content">
+                <div>
+                  <span> الإسكندرية </span>
+                </div>
+
+                <div class="emoji">🌊</div>
+              </div>
+            </button>
+
+            <!-- C -->
+
+            <button class="answer green" id="3">
+              <div class="answer-letter">C</div>
+
+              <div class="answer-content">
+                <div>
+                  <span> الجيزة </span>
+                </div>
+
+                <div class="emoji">🗿</div>
+              </div>
+            </button>
+
+            <!-- D -->
+
+            <button class="answer yellow" id="4">
+              <div class="answer-letter">D</div>
+
+              <div class="answer-content">
+                <div>
+                  <span> الأقصر </span>
+                </div>
+
+                <div class="emoji">🏛️</div>
+              </div>
+            </button>
+          </div>
+          <div class="overhide" id="pauseElement">تم إيقاف اللعبة! 🕕</div>
+        </div>
+
+        <!-- الأسفل -->
+
+        <div class="bottom-bar">
+          <div class="bottom-buttons">
+            <button class="next-btn" id="nextButton"> <- التالي</button>
+            <button class="exit-btn" id="exit">✖ خروج</button>
+            <button class="pause-btn" id="pauseButton">🕛 إيقاف</button>
+          </div>
+
+          <div class="game-name">تحدي المعرفة - &COPY;2026</div>
+        </div>
+      </div>
+
+      <!-- الجانب -->
+
+      <div class="side-panel">
+        <div class="sidebg"></div>
+
+        <!-- النقاط -->
+
+        <div class="panel-card">
+          <div class="increment-value" id="increaseScore">100+</div>
+
+          <span class="panel-title"> النقاط: </span>
+
+          <h3 id="score">0</h3>
+        </div>
+
+        <!-- المستوى -->
+
+        <div class="panel-card long">
+          <span class="panel-title long" id="type"> نوع : </span>
+
+          <br />
+
+          <div class="timer-circle">
+            <svg class="progress-ring" width="120" height="120">
+              <circle class="progress-bg" cx="60" cy="60" r="52" />
+
+              <circle class="progress" cx="60" cy="60" r="52" />
+            </svg>
+
+            <div class="timer-content">
+              <span id="timer"> 20 </span>
+
+              <small> ثانية </small>
+            </div>
+          </div>
+        </div>
+
+        <!-- التايمر -->
+      </div>
+    </div>
+
+    <!-- صوت -->
+
+    <audio id="clickSound" src="Assets/sounds/click.mp3"></audio>
+    <audio id="correctSound" src="Assets/sounds/correct.mp3"></audio>
+    <audio id="wrongSound" src="Assets/sounds/Wrong.mp3"></audio>
+    <audio id="timerSound" src="Assets/sounds/timer.mp3" loop></audio>
+
+    <!-- JS -->
+    <script src="JS/solo.js"></script>
+  </body>
+</html>
